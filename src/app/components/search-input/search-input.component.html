@@ -1,0 +1,21 @@
+<form #searchINP="ngForm" (ngSubmit)="onSubmit(searchINP.value)">
+    <h1>You Just Writing Or Select Data From Array</h1>
+    <h5 *ngFor="let item of _SearchOperationService.programmingLangs; let idx = index">{{idx}} - {{item}}</h5>
+    <div class="search-holder">
+        <div *ngIf="_SearchOperationService.tagArray.length !== 0" class="search-holder__tags--holder">
+            <ul class="search-holder__tags--ul">
+                <li *ngFor="let tag of _SearchOperationService.tagArray; let ix = index" class="search-holder__tags--li">
+                    <span>{{tag.lang}}</span> 
+                    <span class="search-holder__tags--close" (click)="_SearchOperationService.removeTag(ix)">x</span>
+                </li>
+            </ul>
+        </div>
+        <div class="search-holder__input">
+            <input type="search" list="langs" name="lang" ngModel class="search-holder__input--size" (keyup)="_SearchOperationService.backBTN($event)">
+            <datalist id="langs">
+                <option *ngFor="let opt of _SearchOperationService.programmingLangs" [value]="opt"></option>
+            </datalist>
+            <button #reset type="reset" hidden></button>
+        </div>
+    </div>
+</form> 

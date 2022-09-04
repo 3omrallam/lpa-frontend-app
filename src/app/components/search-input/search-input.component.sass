@@ -1,0 +1,40 @@
+.search-holder
+    display: flex
+    align-items: center
+    border: 1px solid gray
+    border-radius: 10px
+    overflow: hidden
+
+    &__input
+        width: 100%
+        &--size
+            width: 100%
+            border: 0
+            padding: 16px
+        &--size:focus-visible
+            outline: none !important
+            
+    &__tags
+        &--li
+            display: flex
+            gap: 4px
+            align-items: center
+            justify-content: center
+            font-size: 14px
+            background-color: grey
+            padding: 2px 4px
+            border-radius: 5px
+            list-style-type: none
+            text-align: center
+        &--ul
+            display: flex
+            align-items: center
+            gap: 8px
+            padding: 0 16px
+        &--close
+            font-size: 14px
+            cursor: pointer
+        &--close:hover
+            color: red
+            font-size: 14px
+            cursor: pointer
