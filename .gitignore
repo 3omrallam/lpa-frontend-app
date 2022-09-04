@@ -1,0 +1,5 @@
+node_modules
+*.pack
+*.old
+*.json
+.DS_Store

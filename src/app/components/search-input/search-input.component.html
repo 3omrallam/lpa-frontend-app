@@ -1,6 +1,5 @@
-<form #searchINP="ngForm" (ngSubmit)="onSubmit(searchINP.value)">
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <h1>You Just Writing Or Select Data From Array</h1>
-    <h5 *ngFor="let item of _SearchOperationService.programmingLangs; let idx = index">{{idx}} - {{item}}</h5>
     <div class="search-holder">
         <div *ngIf="_SearchOperationService.tagArray.length !== 0" class="search-holder__tags--holder">
             <ul class="search-holder__tags--ul">
@@ -11,7 +10,7 @@
             </ul>
         </div>
         <div class="search-holder__input">
-            <input type="search" list="langs" name="lang" ngModel class="search-holder__input--size" (keyup)="_SearchOperationService.backBTN($event)">
+            <input type="search" list="langs" formControlName="lang"class="search-holder__input--size" (keyup)="_SearchOperationService.backBTN($event)">
             <datalist id="langs">
                 <option *ngFor="let opt of _SearchOperationService.programmingLangs" [value]="opt"></option>
             </datalist>
