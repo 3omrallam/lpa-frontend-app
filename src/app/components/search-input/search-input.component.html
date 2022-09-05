@@ -1,20 +1,32 @@
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="inputTagForm" (ngSubmit)="onSubmit()">
     <h1>You Just Writing Or Select Data From Array</h1>
-    <div class="search-holder">
-        <div *ngIf="_SearchOperationService.tagArray.length !== 0" class="search-holder__tags--holder">
-            <ul class="search-holder__tags--ul">
-                <li *ngFor="let tag of _SearchOperationService.tagArray; let ix = index" class="search-holder__tags--li">
-                    <span>{{tag.lang}}</span> 
-                    <span class="search-holder__tags--close" (click)="_SearchOperationService.removeTag(ix)">x</span>
-                </li>
-            </ul>
-        </div>
-        <div class="search-holder__input">
-            <input type="search" list="langs" formControlName="lang"class="search-holder__input--size" (keyup)="_SearchOperationService.backBTN($event)">
-            <datalist id="langs">
-                <option *ngFor="let opt of _SearchOperationService.programmingLangs" [value]="opt"></option>
-            </datalist>
-            <button #reset type="reset" hidden></button>
-        </div>
-    </div>
+        <tag-input 
+        formControlName="lang"
+        [onlyFromAutocomplete]="true"
+        [onTextChangeDebounce]="0" 
+        [editable]="true" 
+        placeholder="Type a Programming Language"
+        secondaryPlaceholder="Type a Programming Language"
+        (onAdd)="_SearchOperationService.triggerClick(submitBTN)"
+        (onRemove)="_SearchOperationService.triggerClick(submitBTN)"
+        >
+        <tag-input-dropdown 
+            [appendToBody]="true" 
+            [focusFirstElement]="false"
+            [autocompleteItems]="_SearchOperationService.programmingLangs" 
+            [showDropdownIfEmpty]="false"
+            >
+            </tag-input-dropdown>
+        </tag-input>
+        <button #submit type="submit" hidden>Submit</button>
 </form> 
+
+
+<div class="" *ngIf="inputTagForm?.value">
+    <h1>Array Value From Form Control </h1>
+    <ul>
+        <li *ngFor="let item of inputTagForm?.value.lang">
+            {{item["value"]}}
+        </li>
+    </ul>
+</div>

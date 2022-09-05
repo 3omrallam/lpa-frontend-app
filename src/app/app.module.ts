@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TagInputModule } from 'ngx-chips';
 import { AppComponent } from './app.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 
@@ -12,8 +13,10 @@ import { SearchInputComponent } from './components/search-input/search-input.com
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TagInputModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

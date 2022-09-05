@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { SearchOperationService } from 'src/app/services/search-operation.service';
 import { FormGroup, FormControl } from '@angular/forms';
 @Component({
@@ -6,19 +6,18 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.sass']
 })
-export class SearchInputComponent {
+export class SearchInputComponent{
 
-  @ViewChild('reset') resetBTN : any
+  @ViewChild('submit') submitBTN! : HTMLButtonElement
 
-  profileForm = new FormGroup({
+  inputTagForm = new FormGroup({
     lang: new FormControl(''),
   });
   
   constructor(public _SearchOperationService : SearchOperationService){}
-
+  
   onSubmit(){
-    this._SearchOperationService.addTag(this.profileForm.value)
-    this._SearchOperationService.triggerClick(this.resetBTN)
+    console.log(this.inputTagForm.value);
   }
 
 }
